@@ -24,7 +24,7 @@ const state = {
       name: "Ayesha Khan",
       email: "ayesha@evolance.edu.pk",
       program: "master",
-      programName: "Master IT Program",
+      programName: "Capstone Pro",
       rollNo: "EVO-MAS-001",
       pass: "password123"
     }
@@ -59,11 +59,6 @@ function initTabNavigation() {
       body.classList.remove("portal-mode-active");
     }
 
-    const footer = document.querySelector(".footer");
-    if (footer) {
-      footer.style.display = (targetTabId === "support") ? "none" : "block";
-    }
-
     tabs.forEach(btn => {
       if (btn.getAttribute("data-tab") === targetTabId) {
         btn.classList.add("active");
@@ -94,48 +89,101 @@ function initTabNavigation() {
   });
 }
 
-// Preloader Reveal Animation - Smooth Upward Docking into Top Bar
+// Preloader Reveal Animation — Logo flies and blends into navbar
 function initPreloader() {
-  const preloader = document.getElementById("preloader");
-  const preloaderBrand = document.getElementById("preloader-brand");
-  const navLogoText = document.getElementById("nav-logo-text");
-  const body = document.body;
+  const preloader   = document.getElementById('preloader');
+  const progress    = document.getElementById('preloader-progress');
+  const counter     = document.getElementById('preloader-counter');
+  const preloaderImg = document.getElementById('preloader-logo-img');
+  const navbarLogoImg = document.getElementById('navbar-logo-img');
+  const body        = document.body;
 
-  if (!preloader) return;
+  if (!preloader || !progress || !counter) return;
 
-  // Ensure top bar EVOLANCE logo text is hidden initially
-  if (navLogoText) navLogoText.style.opacity = "0";
+  let count = 0;
+  const duration = 1400;
+  const interval = 20;
+  const step = Math.ceil(100 / (duration / interval));
 
-  // Wait for initial letter reveal animation (~650ms)
-  setTimeout(() => {
-    if (preloaderBrand && navLogoText) {
-      // Get live screen bounding boxes for starting & ending locations
-      const startRect = preloaderBrand.getBoundingClientRect();
-      const targetRect = navLogoText.getBoundingClientRect();
+  const timer = setInterval(() => {
+    count += step;
+    if (count >= 100) {
+      count = 100;
+      clearInterval(timer);
 
-      const deltaX = targetRect.left - startRect.left;
-      const deltaY = targetRect.top - startRect.top;
-      
-      // Calculate exact height scale ratio
-      const scale = targetRect.height / startRect.height;
-
-      // Single continuous fluid motion directly into navbar logo slot
-      preloaderBrand.style.transformOrigin = "top left";
-      preloaderBrand.style.transition = "transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), letter-spacing 0.85s cubic-bezier(0.16, 1, 0.3, 1)";
-      preloaderBrand.style.letterSpacing = "0.14em";
-      preloaderBrand.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
+      // Small pause so user sees 100%, then trigger the FLIP flight
+      setTimeout(() => launchLogoFlight(), 250);
     }
 
-    preloader.classList.add("move-up");
-    body.classList.remove("loading");
-    body.classList.add("loaded");
+    progress.style.width = count + '%';
+    counter.innerText = count + '%';
+  }, interval);
 
-    // Reveal native navbar logo text right at destination arrival (850ms)
-    setTimeout(() => {
-      if (navLogoText) navLogoText.style.opacity = "1";
-      preloader.classList.add("completed");
-    }, 850);
-  }, 650);
+  function launchLogoFlight() {
+    if (!preloaderImg || !navbarLogoImg) {
+      // Fallback: simple slide-up if elements missing
+      preloader.classList.add('completed');
+      body.classList.remove('loading');
+      body.classList.add('loaded');
+      return;
+    }
+
+    // 1. Measure both logo positions BEFORE site-wrapper is visible
+    const fromRect = preloaderImg.getBoundingClientRect();
+    const toRect   = navbarLogoImg.getBoundingClientRect();
+
+    // 2. Create a flying clone of the preloader logo
+    const clone = document.createElement('img');
+    clone.src   = preloaderImg.src;
+    clone.className = 'logo-fly-clone';
+
+    // Position clone exactly over preloader logo
+    clone.style.width  = fromRect.width  + 'px';
+    clone.style.height = fromRect.height + 'px';
+    clone.style.left   = fromRect.left   + 'px';
+    clone.style.top    = fromRect.top    + 'px';
+    clone.style.opacity = '1';
+    clone.style.boxShadow = '0 0 0 2px rgba(100,180,255,0.15), 0 0 32px rgba(60,130,220,0.25)';
+    clone.style.transition = 'none';
+
+    document.body.appendChild(clone);
+
+    // 3. Hide the original preloader logo immediately
+    preloaderImg.style.opacity = '0';
+
+    // 4. Fade out preloader backdrop & text — leave clone flying
+    preloader.style.transition = 'opacity 0.45s ease';
+    preloader.style.opacity    = '0';
+
+    // 5. Reveal site-wrapper underneath
+    body.classList.remove('loading');
+    body.classList.add('loaded');
+
+    // 6. After one frame, animate the clone to land on the navbar logo
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const scaleW = toRect.width  / fromRect.width;
+        const scaleH = toRect.height / fromRect.height;
+        const dx = toRect.left - fromRect.left + (toRect.width  - fromRect.width)  / 2;
+        const dy = toRect.top  - fromRect.top  + (toRect.height - fromRect.height) / 2;
+
+        clone.style.transition =
+          'transform 1.1s cubic-bezier(0.25, 0.1, 0.25, 1), ' +
+          'opacity 0.3s ease 0.85s, ' +
+          'box-shadow 1.1s ease';
+        clone.style.transform  = `translate(${dx}px, ${dy}px) scale(${scaleW}, ${scaleH})`;
+        clone.style.opacity    = '0';
+        clone.style.boxShadow  = '0 0 6px rgba(100,180,255,0.3)';
+
+        // 7. At landing moment — show real navbar logo and remove clone
+        setTimeout(() => {
+          navbarLogoImg.style.opacity = '1';
+          preloader.style.display = 'none';
+          clone.remove();
+        }, 1050);
+      });
+    });
+  }
 }
 
 // Stats Counter
@@ -265,7 +313,7 @@ function initPortalDashboards() {
     const metaHeader = document.getElementById("student-dashboard-meta");
 
     if (welcomeHeader) welcomeHeader.innerText = `Welcome Back, ${userObj.name || 'Student'}`;
-    if (metaHeader) metaHeader.innerText = `Roll No: ${userObj.rollNo || 'EVO-2026-001'} · ${userObj.programName || 'Master IT Program'}`;
+    if (metaHeader) metaHeader.innerText = `Roll No: ${userObj.rollNo || 'EVO-2026-001'} · ${userObj.programName || 'Capstone Pro'}`;
   }
 
   // Open Faculty Dashboard
@@ -311,7 +359,7 @@ function initPortalDashboards() {
         const demoUser = {
           name: email.split("@")[0].toUpperCase(),
           email: email,
-          programName: "Master IT Program",
+          programName: "Capstone Pro",
           rollNo: "EVO-2026-001"
         };
         if (shouldSave) {
@@ -336,7 +384,7 @@ function initPortalDashboards() {
       const approvedStudent = courseRoster.find(st => st.email.toLowerCase() === email);
 
       if (!approvedStudent) {
-        const progTitle = programKey === "ignite" ? "Capstone Ignite" : (programKey === "juniors" ? "Capstone Juniors" : "Master IT Program");
+        const progTitle = programKey === "ignite" ? "Capstone Ignite" : (programKey === "juniors" ? "Capstone Juniors" : "Capstone Pro");
         alert(`❌ Access Denied: Your email (${email}) has NOT been pre-approved by Evolance Faculty for ${progTitle}.\n\nPlease contact administration or wait for faculty to add your email to the course roster.`);
         return;
       }
@@ -344,7 +392,7 @@ function initPortalDashboards() {
       const progNames = {
         ignite: "Capstone Ignite (Women Track)",
         juniors: "Capstone Juniors (Ages 11-15)",
-        master: "Master IT Program (60+ Skills)"
+        master: "Capstone Pro (60+ Skills)"
       };
 
       const newAccount = {
@@ -376,7 +424,7 @@ function initPortalDashboards() {
       openStudentDashboard({
         name: "Ayesha Khan",
         email: "ayesha@evolance.edu.pk",
-        programName: "Master IT Program",
+        programName: "Capstone Pro",
         rollNo: "EVO-MAS-001"
       });
     });
@@ -796,7 +844,7 @@ function initSupportAIChat() {
     const msgDiv = document.createElement("div");
     msgDiv.className = "chat-message bot-message";
     msgDiv.innerHTML = `
-      <div class="message-avatar"><i class="fa-solid fa-headset"></i></div>
+      <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
       <div class="message-content">${formatMarkdown(text)}</div>
     `;
     chatArea.appendChild(msgDiv);
@@ -820,30 +868,25 @@ function initSupportAIChat() {
     appendUserMessage(text);
     userInput.value = "";
 
+    if (!geminiApiKey) {
+      if (apiKeyCard) apiKeyCard.style.display = "block";
+      appendBotMessage("Please configure your **Gemini API Key** above so I can generate a response for you!");
+      return;
+    }
+
     if (typingIndicator) typingIndicator.style.display = "flex";
 
-    const systemPrompt = `You are a real, warm, and professional human Admissions Counselor at Evolance Institute of IT located in Rawalpindi, Pakistan.
-
-Key Persona Rules:
-- Communicate in a friendly, conversational human tone, just like an experienced admissions counselor talking to a student.
-- NEVER sound like a robot or AI. Do NOT use phrases like "As an AI model...", "I am programmed to...", or mechanical disclaimers.
-- Use natural greetings (e.g. "Assalam-o-Alaikum!", "Hello!", "Great to hear from you!") when appropriate.
-- Keep answers clear, direct, and helpful.
-
-Evolance Institute Details:
-- Founder & Director: NoorAbbas. Core belief: "If the course does not work for the student, the course is the problem — not the student."
-- Location: Rawalpindi, Pakistan.
-- Phone / WhatsApp: 0339-9333066.
-- Class Batches: Small batches to ensure personal attention and hands-on guidance for every student.
-
+    const systemPrompt = `You are the official Customer Support AI Admissions Counselor for Evolance Institute of IT located in Rawalpindi, Pakistan.
+Founder: Abdul Rehman. Co-Founder & Director: NoorAbbas. Core belief: "If the course does not work for the student, the course is the problem — not the student."
 Programs offered:
-1. Master IT Program: 60+ Practical IT Skills (Hardware, Windows/Linux OS, MS Office, Canva, HTML/CSS, Python, Cybersecurity, AI Tools, Freelancing on Fiverr/Upwork). Duration: 6 Months. Fee: PKR 120,000 (semester-wise installments available).
+1. Capstone Pro: 60+ Practical IT Skills (Hardware, Windows/Linux OS, MS Office, Canva, HTML/CSS, Python, Cybersecurity, AI Tools, Freelancing on Fiverr/Upwork). Duration: 6 Months.
 2. Capstone Ignite: Exclusively designed IT & Web Development track for Women. Hands-on web design, digital marketing, graphic design & freelancing.
 3. Capstone Juniors: IT, coding, logic & creativity track for young students (ages 11-15).
+Contact Info: Phone/WhatsApp: 0339-9333066. Location: Rawalpindi, Pakistan.
+Classes are held in small batches to ensure personal attention and hands-on guidance.
+Provide clear, friendly, and helpful answers. Keep responses concise and formatted cleanly.`;
 
-Respond naturally, concisely, and warmly to the student's question as a human representative.`;
-
-    const models = ["gemini-flash-lite-latest", "gemini-flash-latest", "gemma-4-26b-a4b-it"];
+    const models = ["gemini-1.5-flash", "gemini-2.0-flash", "gemini-pro"];
     let botReply = null;
     let lastError = null;
 
@@ -884,7 +927,7 @@ Respond naturally, concisely, and warmly to the student's question as a human re
     if (botReply) {
       appendBotMessage(botReply);
     } else {
-      appendBotMessage(`Sorry, I am currently unable to process your request right now (${lastError || "Network busy"}). Please feel free to reach out directly via WhatsApp using the floating button at the bottom right!`);
+      appendBotMessage(`**API Response Note:** Unable to generate response with key (${lastError || "Invalid response"}). You can click **Configure API Key** above to update your key.`);
     }
   }
 }

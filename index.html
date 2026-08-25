@@ -4,25 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EVOLANCE INSTITUTE OF IT — Rawalpindi, Pakistan</title>
-  <!-- SEO & Meta Tags -->
-  <meta name="description" content="Evolance Institute of IT offers industry-aligned programs: Master IT, Capstone Ignite for Women, and Capstone Juniors in Rawalpindi, Pakistan.">
-  <meta name="keywords" content="Evolance, IT Institute, Rawalpindi, Master IT, Capstone Ignite, Capstone Juniors, Web Development, Freelancing">
-  <meta name="theme-color" content="#08090b">
-
-  <!-- Open Graph / Facebook Meta Tags -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="EVOLANCE INSTITUTE OF IT — Rawalpindi, Pakistan">
-  <meta property="og:description" content="Industry-aligned IT education programs designed for practical skills and career success.">
-  <meta property="og:site_name" content="Evolance Institute of IT">
-  <meta property="og:locale" content="en_US">
-
-  <!-- Twitter Meta Tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EVOLANCE INSTITUTE OF IT — Rawalpindi, Pakistan">
-  <meta name="twitter:description" content="Industry-aligned IT education programs designed for practical skills and career success.">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2308090b%22/><text y=%2270%22 x=%2215%22 font-size=%2265%22 font-weight=%22800%22 fill=%22%23e87234%22 font-family=%22sans-serif%22>E</text></svg>">
+  <meta name="description" content="Evolance Institute of IT offers industry-aligned programs: Capstone Pro, Capstone Ignite for Women, and Capstone Juniors.">
 
   <!-- Google Fonts: Syne (Bold Editorial Display) & Plus Jakarta Sans (Clean Minimal Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,7 +21,8 @@
   <!-- Fullscreen Preloader Splash Animation -->
   <div class="preloader" id="preloader">
     <div class="preloader-content">
-      <div class="preloader-brand" id="preloader-brand">
+      <img src="./evolance-logo.jpg" alt="Evolance Institute of IT" class="preloader-logo-img" id="preloader-logo-img">
+      <div class="preloader-brand">
         <span class="char">E</span>
         <span class="char">V</span>
         <span class="char">O</span>
@@ -50,6 +33,10 @@
         <span class="char">E</span>
       </div>
       <div class="preloader-sub">INSTITUTE OF IT</div>
+      <div class="preloader-bar">
+        <div class="preloader-progress" id="preloader-progress"></div>
+      </div>
+      <span class="preloader-counter" id="preloader-counter">0%</span>
     </div>
   </div>
 
@@ -59,10 +46,11 @@
     <!-- Top Navigation Bar -->
     <header class="navbar" id="main-navbar">
       <div class="container nav-container">
-        <a href="#home" class="logo nav-tab" data-tab="home">
-          <span class="logo-mark"></span>
+        <a href="#home" class="logo nav-tab" data-tab="home" id="navbar-logo">
+          <img src="./evolance-logo.jpg" alt="Evolance Institute of IT" class="logo-emblem-img" id="navbar-logo-img">
           <div class="logo-group">
-            <span class="logo-text" id="nav-logo-text">EVOLANCE</span>
+            <span class="logo-text">EVOLANCE</span>
+            <span class="logo-sub">INSTITUTE OF IT</span>
           </div>
         </a>
 
@@ -76,7 +64,7 @@
           <button class="nav-tab active" data-tab="home">Home</button>
           <button class="nav-tab" data-tab="ignite">Capstone Ignite</button>
           <button class="nav-tab" data-tab="juniors">Capstone Juniors</button>
-          <button class="nav-tab" data-tab="master">Master IT (11 Modules)</button>
+          <button class="nav-tab" data-tab="master">Capstone Pro (11 Modules)</button>
           <button class="nav-tab" data-tab="support"><i class="fa-solid fa-headset"></i> AI Support</button>
           <div class="mobile-registration-wrapper">
             <button class="nav-tab mobile-reg-btn" data-tab="registration"><span>Registration</span> <i class="fa-solid fa-arrow-up-right"></i></button>
@@ -99,131 +87,232 @@
     <!-- MAIN TABBED VIEWS -->
     <main class="main-content">
 
+      <!-- Structured Slide Deck Outline for Screen Readers, Web Crawlers, and LLM Parsers -->
+      <nav class="sr-llm-outline" aria-label="Slide Deck Presentation Outline" data-llm-outline="true">
+        <header>
+          <h2>Evolance Institute of IT - Interactive Presentation & Program Outline</h2>
+          <p>This section provides a structured, machine-readable outline of the course paths and modules offered by Evolance Institute of IT.</p>
+        </header>
+
+        <section id="outline-slide-1" aria-labelledby="slide-title-1">
+          <article>
+            <h3 id="slide-title-1">Slide 1: Welcome & Mission</h3>
+            <p>Empowering lives through practical IT mastery in Rawalpindi, Pakistan. Founded by Abdul Rehman, co-founded by NoorAbbas.</p>
+            <ul>
+              <li>Core Focus: Practical execution over pure theory.</li>
+              <li>Target Audience: Aspiring developers, professional career switchers, and young students.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="outline-slide-2" aria-labelledby="slide-title-2">
+          <article>
+            <h3 id="slide-title-2">Slide 2: Capstone Ignite</h3>
+            <p>An intensive tech track specifically curated to bridge the tech gender gap and empower women in IT.</p>
+            <ul>
+              <li>Focus Areas: Modern frontend frameworks, web application architecture, and professional freelancing.</li>
+              <li>Duration & Methodology: Guided project execution under active mentorship.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="outline-slide-3" aria-labelledby="slide-title-3">
+          <article>
+            <h3 id="slide-title-3">Slide 3: Capstone Juniors</h3>
+            <p>A structured foundational learning path designed for young minds aged 11 to 15.</p>
+            <ul>
+              <li>Focus Areas: Logical programming structures, game design fundamentals, and computational thinking.</li>
+              <li>Aims: Introducing standard coding syntax and concepts early to nurture next-generation software builders.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section id="outline-slide-4" aria-labelledby="slide-title-4">
+          <article>
+            <h3 id="slide-title-4">Slide 4: Capstone Pro</h3>
+            <p>Our flagship comprehensive curriculum featuring 11 full modules covering over 60 critical industry-ready skills.</p>
+            <ul>
+              <li>Key Modules: Web design, complete web development, database architectures, backend cloud servers, and production-ready APIs.</li>
+              <li>Objective: Transitioning students from novices to versatile, hireable full-stack software professionals.</li>
+            </ul>
+          </article>
+        </section>
+      </nav>
+
       <!-- ===================================================================
            TAB 1: HOME
            =================================================================== -->
       <section class="tab-view active" id="tab-home">
         <!-- Hero Section -->
         <div class="hero">
+          <!-- Ambient Hero Background with Student Visual -->
+          <div class="hero-bg-wrapper">
+            <img src="./hero-student-bg.png" alt="Evolance IT Student" class="hero-bg-img">
+            <div class="hero-bg-overlay"></div>
+          </div>
+
           <div class="container hero-container">
-            <div class="hero-tag">
-              <span class="tag-number">Rawalpindi, Pakistan</span>
-              <span class="tag-divider"></span>
-              <span class="tag-title">Founded by NoorAbbas</span>
+            <div class="hero-main-row">
+              <div class="hero-content">
+                <div class="hero-tag">
+                  <span>Founded by Abdul Rehman &bull; Co-Founded by NoorAbbas</span>
+                </div>
+
+                <h1 class="hero-heading">
+                  Step Out.<br>
+                  <span class="hero-accent-text">Skill Up.</span>
+                </h1>
+
+                <p class="hero-desc">
+                  We empower young minds—especially women—with practical IT skills, confidence, and the freedom to create their own success.
+                </p>
+
+                <div class="hero-actions">
+                  <button id="explore-courses-btn" class="hero-btn-explore">
+                    <span>Explore Courses</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <h1 class="hero-heading">
-              Empowering Lives Through <br>
-              <span class="serif-title">Practical IT Mastery.</span>
-            </h1>
+            <!-- Bottom 4 Feature Cards Bar -->
+            <div class="hero-features-bar">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Practical Learning</h4>
+                  <p>Learn by doing with real-world projects.</p>
+                </div>
+              </div>
 
-            <div class="hero-bottom-row">
-              <p class="hero-desc">
-                From zero to digitally confident. Hands-on IT, Web Engineering, AI, and Freelancing education designed for real workplaces, independent income, and future generations.
-              </p>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Career Focused</h4>
+                  <p>Skills that open doors to real opportunities.</p>
+                </div>
+              </div>
 
-              <div class="hero-actions">
-                <button id="explore-courses-btn" class="minimal-btn">
-                  <span>Explore Courses</span>
-                  <i class="fa-solid fa-arrow-down"></i>
-                </button>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Expert Mentorship</h4>
+                  <p>Guided by professionals who care about your growth.</p>
+                </div>
+              </div>
+
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fa-solid fa-rocket"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Future Ready</h4>
+                  <p>Stay ahead with AI, Web, and in-demand skills.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Vision Statement -->
-        <div class="statement-section">
-          <div class="container">
-            <div class="statement-grid">
-              <div class="statement-label">Our Core Belief</div>
-              <div class="statement-body">
-                <h2 class="statement-text">
-                  "If the course does not work for the student, the course is the problem — not the student."
-                </h2>
-                <p class="statement-author">— NoorAbbas, Founder of Evolance Institute of IT</p>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Quick Program Cards -->
+
+        <!-- Courses Section -->
         <div class="programs-section" id="courses-section">
+
           <div class="container">
-            <div class="section-header">
-              <div>
-                <h2 class="section-title">Explore Our Dedicated Courses</h2>
-              </div>
+            <!-- Section Header -->
+            <div class="courses-section-header">
+              <p class="courses-eyebrow">OUR COURSES</p>
+              <h2 class="courses-title">
+                Three Tracks. One Mission.<br>
+                <span class="courses-title-blue">Your Future in Tech.</span>
+              </h2>
+              <p class="courses-subtitle">
+                Capstone is our flagship course suite at Evolance Institute of IT, built for different learners at different stages of life. Whether you're enrolling your child, starting your own journey, or leveling up your career — there's a track designed specifically for you.
+              </p>
+              <p class="courses-subtitle courses-subtitle-spaced">
+                Every Capstone course is structured, activity-based, and taught with every student on a laptop from day one. No theory-heavy lectures, no passive learning. Just real skills, real practice, and a clear path to real results.
+              </p>
+              <p class="courses-subtitle courses-subtitle-highlight">This is where your tech journey begins.</p>
             </div>
 
+            <!-- Program Cards Grid -->
             <div class="programs-grid">
-              <!-- Card 1 -> Ignite Tab -->
-              <div class="program-card nav-tab" data-tab="ignite">
+
+              <!-- Card 1: Capstone Ignite -->
+              <div class="program-card program-card--ignite nav-tab" data-tab="ignite">
                 <div class="card-meta">
                   <span class="card-badge">Women-First Initiative</span>
                 </div>
-                <h3 class="program-title">Capstone Ignite</h3>
-                <p class="program-subtitle">Empowering Women Through Technology</p>
+                <div class="card-icon-wrap card-icon--ignite">
+                  <i class="fa-solid fa-user-graduate"></i>
+                </div>
+                <h3 class="program-title">Capstone <span class="program-title-accent program-title-accent--ignite">Ignite</span></h3>
+                <p class="program-subtitle program-subtitle--ignite">Empowering Women Through Technology</p>
                 <p class="program-desc">
-                  Designed for students, homemakers, and job seekers. Build digital confidence, master MS Office, Canva, AI tools, and launch freelancing services on Fiverr & Upwork.
+                  Designed for students, homemakers, and job seekers. Build digital confidence, master MS Office, Canva, AI tools, and launch freelancing services on Fiverr &amp; Upwork.
                 </p>
                 <div class="card-footer">
-                  <span class="text-link">Open Full Ignite Tab <i class="fa-solid fa-arrow-right"></i></span>
+                  <button class="course-btn course-btn--ignite">
+                    <span>View Full Ignite</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
                 </div>
               </div>
 
-              <!-- Card 2 -> Juniors Tab -->
-              <div class="program-card nav-tab" data-tab="juniors">
+              <!-- Card 2: Capstone Juniors -->
+              <div class="program-card program-card--juniors nav-tab" data-tab="juniors">
                 <div class="card-meta">
                   <span class="card-badge">Ages 11–15 Track</span>
                 </div>
-                <h3 class="program-title">Capstone Juniors</h3>
-                <p class="program-subtitle">Next-Gen Tech & Game Coding</p>
+                <div class="card-icon-wrap card-icon--juniors">
+                  <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <h3 class="program-title">Capstone <span class="program-title-accent program-title-accent--juniors">Juniors</span></h3>
+                <p class="program-subtitle program-subtitle--juniors">Next-Gen Tech &amp; Game Coding</p>
                 <p class="program-desc">
-                  Building problem-solving logic and digital literacy. From computer fundamentals to Scratch visual game coding, Python, and AI prompt engineering.
+                  Building problem-solving logic and digital literacy. From computer fundamentals to Scratch, visual game coding, Python, and AI prompt engineering.
                 </p>
                 <div class="card-footer">
-                  <span class="text-link">Open Full Juniors Tab <i class="fa-solid fa-arrow-right"></i></span>
+                  <button class="course-btn course-btn--juniors">
+                    <span>View Full Junior</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
                 </div>
               </div>
 
-              <!-- Card 3 -> Master Tab -->
-              <div class="program-card nav-tab" data-tab="master">
+              <!-- Card 3: Capstone Pro -->
+              <div class="program-card program-card--pro nav-tab" data-tab="master">
                 <div class="card-meta">
-                  <span class="card-badge">60+ Skills Track</span>
+                  <span class="card-badge">Ages 16–18 Track</span>
                 </div>
-                <h3 class="program-title">Master IT Program</h3>
-                <p class="program-subtitle">Workplace & Career Readiness</p>
+                <div class="card-icon-wrap card-icon--pro">
+                  <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h3 class="program-title">Capstone <span class="program-title-accent program-title-accent--pro">Pro</span></h3>
+                <p class="program-subtitle program-subtitle--pro">Workplace &amp; Career Readiness</p>
                 <p class="program-desc">
                   The ultimate career program covering hardware, OS, Google Workspace, Cybersecurity, Databases, AI, Python, C++, WordPress, Webflow, Canva, and Freelancing.
                 </p>
                 <div class="card-footer">
-                  <span class="text-link">Open Full 11 Modules Tab <i class="fa-solid fa-arrow-right"></i></span>
+                  <button class="course-btn course-btn--pro">
+                    <span>View Full Pro</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
 
-        <!-- Minimal Stats Section -->
-        <div class="stats-section">
-          <div class="container">
-            <div class="stats-grid">
-              <div class="stat-box">
-                <div class="stat-val" data-target="60">0+</div>
-                <div class="stat-lbl">Practical Skills Taught</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-val" data-target="11">0</div>
-                <div class="stat-lbl">Structured Modules</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-val" data-target="100">0%</div>
-                <div class="stat-lbl">Hands-on Laptop Learning</div>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       <!-- ===================================================================
@@ -234,8 +323,8 @@
           <div class="page-header">
             <span class="page-badge">Women-First Tech Initiative</span>
             <h1 class="page-title">Capstone Ignite</h1>
-            <p class="page-subtitle">Empowering Women Through Technology · Founded by NoorAbbas</p>
-            <p class="page-meta">25 Class Days | 10+ Real Skills | 1 Recognized Certificate</p>
+            <p class="page-subtitle">Empowering Women Through Technology · Founded by Abdul Rehman · Co-Founded by NoorAbbas</p>
+            <p class="page-meta">4 Phases | 10+ Real Skills | 1 Recognized Certificate</p>
           </div>
 
           <div class="page-body-grid">
@@ -267,33 +356,33 @@
 
               <!-- 4 Phases Breakdown -->
               <div class="info-block">
-                <h3>25-Day 4-Phase Curriculum Breakdown</h3>
+                <h3>4-Phase Curriculum Breakdown</h3>
                 <div class="phase-timeline">
                   <div class="phase-item">
                     <span class="phase-num">Phase 1</span>
                     <div>
-                      <h4>Foundations (Days 1–6)</h4>
+                      <h4>Foundations</h4>
                       <p>Computer hardware basics, Windows navigation, file management, typing accuracy, and sitting confidently at any PC.</p>
                     </div>
                   </div>
                   <div class="phase-item">
                     <span class="phase-num">Phase 2</span>
                     <div>
-                      <h4>Productivity (Days 7–14)</h4>
+                      <h4>Productivity</h4>
                       <p>MS Word document formatting, Excel spreadsheets, PowerPoint presentations, Google Workspace, and Canva graphic design.</p>
                     </div>
                   </div>
                   <div class="phase-item">
                     <span class="phase-num">Phase 3</span>
                     <div>
-                      <h4>Digital Skills & AI (Days 15–20)</h4>
+                      <h4>Digital Skills & AI</h4>
                       <p>Safe browsing, online privacy, ChatGPT & Gemini AI prompt engineering, social media content creation.</p>
                     </div>
                   </div>
                   <div class="phase-item">
                     <span class="phase-num">Phase 4</span>
                     <div>
-                      <h4>Earn & Grow (Days 21–25)</h4>
+                      <h4>Earn & Grow</h4>
                       <p>Setting up freelancing profiles on Fiverr & Upwork, pricing services, writing proposals, delivering client projects, and graduation.</p>
                     </div>
                   </div>
@@ -327,7 +416,7 @@
             <span class="page-badge">Ages 11–15 Tech Track</span>
             <h1 class="page-title">Capstone Juniors</h1>
             <p class="page-subtitle">Next-Generation Technology & Coding Programme</p>
-            <p class="page-meta">30 Days | 4 Phases | 15+ Skills | 3 Projects</p>
+            <p class="page-meta">4 Phases | 15+ Skills | 3 Projects</p>
           </div>
 
           <div class="page-body-grid">
@@ -341,33 +430,33 @@
 
               <!-- 4 Phases Breakdown -->
               <div class="info-block">
-                <h3>30-Day 4-Phase Curriculum Breakdown</h3>
+                <h3>4-Phase Curriculum Breakdown</h3>
                 <div class="phase-timeline">
                   <div class="phase-item">
                     <span class="phase-num">Phase 1</span>
                     <div>
-                      <h4>IT Foundations (Days 1–5)</h4>
+                      <h4>IT Foundations</h4>
                       <p>Understanding computer parts, Windows settings, taskbar shortcuts, file/folder organization, and proper typing technique.</p>
                     </div>
                   </div>
                   <div class="phase-item">
                     <span class="phase-num">Phase 2</span>
                     <div>
-                      <h4>Internet & Productivity (Days 6–10)</h4>
+                      <h4>Internet & Productivity</h4>
                       <p>Safe online browsing, phishing awareness, MS Word document creation, PowerPoint & designing a take-home Canva poster.</p>
                     </div>
                   </div>
                   <div class="phase-item">
                     <span class="phase-num">Phase 3</span>
                     <div>
-                      <h4>Coding & Logic (Days 11–15)</h4>
+                      <h4>Coding & Logic</h4>
                       <p>Computational thinking, Scratch drag-and-drop block coding, Python language intro, building and presenting a coded Scratch game.</p>
                     </div>
                   </div>
                   <div class="phase-item">
                     <span class="phase-num">Phase 4</span>
                     <div>
-                      <h4>AI & Showcase (Days 16–20)</h4>
+                      <h4>AI & Showcase</h4>
                       <p>How AI works, writing clear AI prompts, building a final showcase project, and presenting to parents on Certificate Day.</p>
                     </div>
                   </div>
@@ -394,13 +483,13 @@
       </section>
 
       <!-- ===================================================================
-           TAB 4: MASTER IT PROGRAM
+           TAB 4: CAPSTONE PRO
            =================================================================== -->
       <section class="tab-view" id="tab-master">
         <div class="container page-container">
           <div class="page-header">
             <span class="page-badge gold">Complete 60+ Skills Track</span>
-            <h1 class="page-title">Master IT Program</h1>
+            <h1 class="page-title">Capstone Pro</h1>
             <p class="page-subtitle">A Complete Workplace & Career Breakdown for Students & Parents</p>
             <p class="page-meta">11 Modules | 60+ Practical Skills | Real Workplace Tools</p>
           </div>
@@ -456,11 +545,11 @@
             <!-- Sidebar -->
             <div class="page-sidebar">
               <div class="sidebar-card">
-                <h3>Master IT Summary</h3>
+                <h3>Capstone Pro Summary</h3>
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
                   Produces well-rounded graduates capable of working in offices, coding software, managing websites, and earning online.
                 </p>
-                <button class="minimal-btn btn-full nav-tab" data-tab="registration">Register for Master IT <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="minimal-btn btn-full nav-tab" data-tab="registration">Register for Capstone Pro <i class="fa-solid fa-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -485,7 +574,7 @@
               <!-- Quick Suggestion Chips -->
               <div class="quick-chips-row">
                 <span class="chip-label">Suggested Questions:</span>
-                <button class="chip-btn" data-query="What is the fee and duration of the Master IT Program?">Master IT Fee & Duration</button>
+                <button class="chip-btn" data-query="What is the fee and duration of the Capstone Pro Program?">Capstone Pro Fee & Duration</button>
                 <button class="chip-btn" data-query="Who can join Capstone Ignite for Women?">Capstone Ignite Info</button>
                 <button class="chip-btn" data-query="What skills do kids learn in Capstone Juniors?">Capstone Juniors Skills</button>
                 <button class="chip-btn" data-query="Where is Evolance Institute located in Rawalpindi?">Campus Location & Contact</button>
@@ -493,7 +582,14 @@
 
               <!-- Chat Message Scroll Window -->
               <div class="chat-messages-area" id="chat-messages-area">
-                <!-- Starts empty until talked to -->
+                <!-- Welcome Bot Message -->
+                <div class="chat-message bot-message">
+                  <div class="message-avatar"><i class="fa-solid fa-robot"></i></div>
+                  <div class="message-content">
+                    <p>Hello! Welcome to <strong>Evolance Institute of IT</strong>. I am your 24/7 AI Admissions Counselor powered by Gemini.</p>
+                    <p>Ask me any question about our courses (Capstone Pro, Capstone Ignite, Capstone Juniors), fee details, batch timings, or campus location in Rawalpindi!</p>
+                  </div>
+                </div>
               </div>
 
               <!-- Typing Indicator -->
@@ -501,7 +597,7 @@
                 <div class="typing-dots">
                   <span></span><span></span><span></span>
                 </div>
-                <span class="typing-label">Evolance Counselor is typing...</span>
+                <span class="typing-label">Evolance AI is thinking...</span>
               </div>
 
               <!-- Chat Input Bar -->
@@ -561,7 +657,7 @@
                     <option value="" disabled selected>Select Program...</option>
                     <option value="Capstone Ignite (Women Track)">Capstone Ignite (Women Track)</option>
                     <option value="Capstone Juniors (Ages 11-15)">Capstone Juniors (Ages 11-15)</option>
-                    <option value="Master IT Program (60+ Skills)">Master IT Program (60+ Skills)</option>
+                    <option value="Capstone Pro (60+ Skills)">Capstone Pro (60+ Skills)</option>
                   </select>
                 </div>
 
@@ -578,9 +674,12 @@
     <footer class="footer">
       <div class="container footer-container">
         <div class="footer-top">
-          <div>
-            <h2 class="footer-title">EVOLANCE INSTITUTE OF IT</h2>
-            <p class="footer-subtext">Rawalpindi, Pakistan · Founded by NoorAbbas</p>
+          <div class="footer-brand-wrap">
+            <img src="./evolance-logo.jpg" alt="Evolance Institute of IT" class="footer-emblem-img">
+            <div>
+              <h2 class="footer-title">EVOLANCE INSTITUTE OF IT</h2>
+              <p class="footer-subtext">Rawalpindi, Pakistan · Founded by Abdul Rehman · Co-Founded by NoorAbbas</p>
+            </div>
           </div>
           <button class="footer-email nav-tab" data-tab="registration">Course Registration <i class="fa-solid fa-arrow-up-right"></i></button>
         </div>
@@ -602,7 +701,15 @@
               <div class="contact-item">
                 <i class="fa-solid fa-user"></i>
                 <div>
-                  <strong>Founder & Director</strong>
+                  <strong>Founder</strong>
+                  <p>Abdul Rehman</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i class="fa-solid fa-user"></i>
+                <div>
+                  <strong>Co-Founder & Director</strong>
                   <p>NoorAbbas</p>
                 </div>
               </div>
@@ -628,11 +735,6 @@
 
         <div class="footer-bottom">
           <span>&copy; 2026 EVOLANCE INSTITUTE OF IT. ALL RIGHTS RESERVED.</span>
-          <div class="footer-socials">
-            <a href="https://www.linkedin.com/company/evolance-institute-of-it/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/evolanceedu/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=61591508640387" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
-          </div>
           <a href="#" class="top-link" id="back-to-top">Back to Top <i class="fa-solid fa-arrow-up"></i></a>
         </div>
       </div>
